@@ -1,10 +1,9 @@
-﻿
-namespace IocBattle.Benchmark.Models
+﻿namespace IocBattle.Benchmark.Models
 {
-	public interface IWebService
-	{
-		IAuthenticator Authenticator { get; }
-		IStockQuote StockQuote { get; }
-		void Execute();
-	}
+    public interface IWebService
+    {
+        IAuthenticator Authenticator { get; }
+        IStockQuote StockQuote { get; }
+        void Execute();
+    }
 }

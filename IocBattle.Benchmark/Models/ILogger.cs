@@ -1,7 +1,6 @@
-﻿
-namespace IocBattle.Benchmark.Models
+﻿namespace IocBattle.Benchmark.Models
 {
-	public interface ILogger
-	{
-	}
+    public interface ILogger
+    {
+    }
 }

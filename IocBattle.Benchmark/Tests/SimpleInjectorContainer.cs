@@ -1,28 +1,27 @@
-﻿using Autofac;
-using IocBattle.Benchmark.Models;
+﻿using IocBattle.Benchmark.Models;
 using SimpleInjector;
 
 namespace IocBattle.Benchmark.Tests
 {
-	public class SimpleInjectorContainer : IContainer
-	{
-	    private Container _container;
+    public class SimpleInjectorContainer : IContainer
+    {
+        private Container _container;
 
-		public string Name
-		{
-			get { return "SimpleInjector"; }
-		}
+        public string Name
+        {
+            get { return "SimpleInjector"; }
+        }
 
-		public T Resolve<T>()
-			where T : class
-		{
-			return _container.GetInstance<T>();
-		}
+        public T Resolve<T>()
+            where T : class
+        {
+            return _container.GetInstance<T>();
+        }
 
-		public void SetupForTransientTest()
-		{
+        public void SetupForTransientTest()
+        {
             _container = new Container();
-			_container.Register<IRepository, Repository>();
+            _container.Register<IRepository, Repository>();
             _container.Register<IAuthenticationService, AuthenticationService>();
             _container.Register<UserController>();
             _container.Register<IWebService, WebService>();
@@ -35,10 +34,10 @@ namespace IocBattle.Benchmark.Tests
             _container.Register<IService3, Service3>();
             _container.Register<IService4, Service4>();
             _container.Register<ILogger, Logger>();
-		}
+        }
 
-		public void SetupForSingletonTest()
-		{
+        public void SetupForSingletonTest()
+        {
             _container = new Container();
             _container.Register<IRepository, Repository>(Lifestyle.Singleton);
 
@@ -54,6 +53,6 @@ namespace IocBattle.Benchmark.Tests
             _container.Register<IService3, Service3>(Lifestyle.Singleton);
             _container.Register<IService4, Service4>(Lifestyle.Singleton);
             _container.Register<ILogger, Logger>(Lifestyle.Singleton);
-		}
-	}
+        }
+    }
 }

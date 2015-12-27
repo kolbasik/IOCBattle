@@ -1,19 +1,14 @@
-using System;
-
 namespace IocBattle.Benchmark.Models
 {
-	public class Database : IDatabase
-	{
-		ILogger logger;
-		IErrorHandler handler;
+    public class Database : IDatabase
+    {
+        public Database(ILogger logger, IErrorHandler handler)
+        {
+            Logger = logger;
+            ErrorHandler = handler;
+        }
 
-		public Database(ILogger logger, IErrorHandler handler)
-		{
-			this.logger = logger;
-			this.handler = handler;
-		}
-
-		public ILogger Logger { get { return logger; } }
-		public IErrorHandler ErrorHandler { get { return handler; } }
-	}
+        public ILogger Logger { get; }
+        public IErrorHandler ErrorHandler { get; }
+    }
 }

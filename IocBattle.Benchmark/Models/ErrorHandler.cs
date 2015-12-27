@@ -1,15 +1,12 @@
-
 namespace IocBattle.Benchmark.Models
 {
-	public class ErrorHandler : IErrorHandler
-	{
-		ILogger logger;
+    public class ErrorHandler : IErrorHandler
+    {
+        public ErrorHandler(ILogger logger)
+        {
+            Logger = logger;
+        }
 
-		public ErrorHandler(ILogger logger)
-		{
-			this.logger = logger;
-		}
-
-		public ILogger Logger { get { return logger; } }
-	}
+        public ILogger Logger { get; }
+    }
 }

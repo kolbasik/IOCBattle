@@ -1,11 +1,10 @@
-﻿
-namespace IocBattle.Benchmark.Models
+﻿namespace IocBattle.Benchmark.Models
 {
-	public interface IAuthenticationService
-	{
-	}
+    public interface IAuthenticationService
+    {
+    }
 
-	public class AuthenticationService : IAuthenticationService
-	{
-	}
+    public class AuthenticationService : IAuthenticationService
+    {
+    }
 }
