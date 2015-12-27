@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using IocBattle.Benchmark.Tests;
 
 namespace IocBattle.Benchmark
@@ -20,12 +21,21 @@ namespace IocBattle.Benchmark
                 new WindsorContainer()
             };
 
+            var benchmarks = new List<Benchmark>();
             foreach (var container in containers)
             {
-                new BenchEngine(container).Start();
+                var runner = new BenchEngine2(container);
+                var results = runner.Start();
+                foreach (var result in results)
+                {
+                    Console.WriteLine(result);
+                    benchmarks.Add(result);
+                }
+                Console.WriteLine();
             }
 
-            Console.Read();
+            Console.WriteLine("Press any key...");
+            Console.ReadKey(true);
         }
     }
 }

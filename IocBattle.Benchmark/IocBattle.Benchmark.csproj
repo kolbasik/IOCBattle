@@ -144,6 +144,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BenchEngine.cs" />
+    <Compile Include="BenchEngine2.cs" />
     <Compile Include="IContainer.cs" />
     <Compile Include="Models\AuthenticationService.cs" />
     <Compile Include="Models\Authenticator.cs" />
