@@ -1,5 +1,5 @@
 ﻿using IocBattle.Benchmark.Models;
-using StructureMap;
+using IocBattle.Benchmark.StructureMap;
 
 // How do i specify that it should use a specific named instance ? 
 
@@ -15,13 +15,12 @@ namespace IocBattle.Benchmark.Tests
 		public T Resolve<T>()
 			where T : class
 		{
-			return ObjectFactory.GetNamedInstance<T>("WebService");
+			return ObjectFactory.Container.GetInstance<T>("WebService");
 		}
 
 		public void SetupForTransientTest()
 		{
-			ObjectFactory.Container.Dispose();
-
+			ObjectFactory.Dispose();
 			ObjectFactory.Initialize(x =>
 											 {
 												 x.For<IRepository>().Use<Repository>();
@@ -45,8 +44,7 @@ namespace IocBattle.Benchmark.Tests
 
 		public void SetupForSingletonTest()
 		{
-			ObjectFactory.Container.Dispose();
-
+			ObjectFactory.Dispose();
 			ObjectFactory.Initialize(x =>
 			{
 				x.For<IRepository>().Singleton().Use<Repository>();

@@ -1,5 +1,5 @@
 ﻿using IocBattle.Benchmark.Models;
-using StructureMap;
+using IocBattle.Benchmark.StructureMap;
 
 namespace IocBattle.Benchmark.Tests
 {
@@ -13,13 +13,12 @@ namespace IocBattle.Benchmark.Tests
 		public T Resolve<T>()
 			where T : class
 		{
-			return ObjectFactory.GetInstance<T>();
+			return ObjectFactory.Container.GetInstance<T>();
 		}
 
 		public void SetupForTransientTest()
 		{
-			ObjectFactory.Container.Dispose();
-
+			ObjectFactory.Dispose();
 			ObjectFactory.Initialize(x =>
 											 {
 												 x.For<IRepository>().Use<Repository>();
@@ -43,8 +42,7 @@ namespace IocBattle.Benchmark.Tests
 
 		public void SetupForSingletonTest()
 		{
-			ObjectFactory.Container.Dispose();
-
+			ObjectFactory.Dispose();
 			ObjectFactory.Initialize(x =>
 			{
 				x.For<IRepository>().Singleton().Use<Repository>();
